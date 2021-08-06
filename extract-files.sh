@@ -41,6 +41,10 @@ function blob_fixup() {
             ;;
         vendor/lib/libmmcamera_ppeiscore.so)
             sed -i 's|libgui.so|libwui.so|g' "${2}"
+            "${PATCHELF}" --print-needed "${2}"|grep "libshims_ui.so">/dev/null
+            if [ $? -ne 0 ]; then
+                "${PATCHELF}" --add-needed "libshims_ui.so" "${2}"
+            fi
             ;;
         vendor/lib/libmpbase.so)
             "${PATCHELF}" --replace-needed "libandroid.so" "libshims_android.so" "${2}"
