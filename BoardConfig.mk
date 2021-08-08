@@ -19,6 +19,9 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_rova
 # Kernel
 TARGET_KERNEL_CONFIG := mi8937_defconfig
 
+# Power
+TARGET_TAP_TO_WAKE_NODE := "/proc/sys/dev/dt2w"
+
 # Security patch level
 VENDOR_SECURITY_PATCH := 2018-07-01
 
